@@ -14,7 +14,7 @@ namespace ZBoard
 {
     public partial class FormEdit : Form
     {
-        private int editedbutton;
+        
 
 
         //          moving with mouse
@@ -57,15 +57,16 @@ namespace ZBoard
             }
             if (nm != null)
             {
-                textBox1.Text = nm;
+                nameBox.Text = nm;
             }
         }
 
         //       vars to be saves
-        private string imgpath;
-        private string wavpath;
-        private uint volume;
-        private string name;
+        public int editedbutton { get; set; }
+        public string imgpath { get; set; }
+        public string wavpath { get; set; }
+        public uint volume { get; set; }
+        public string name { get; set; }
 
         //volume shit
         [DllImport("winmm.dll")]
@@ -133,49 +134,47 @@ namespace ZBoard
                 }
             }
         }
-        //holdery
+        //              holders
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }
-
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
-
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
         }
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+            name = nameBox.Text;
+        }
 
-        //play
+        //              play
         private void playTest_Click(object sender, EventArgs e)
         {
             SoundPlayer snd = new SoundPlayer(wavpath);
             snd.Play();
         }
-        //nic
-        private void label1_Click(object sender, EventArgs e)
-        {
 
-        }
-        //save and discard
+        public event Action ReloadForm1;
+
+        //on the place where you will reload form1
+
+
+        //              save and discard
         private void save_Click(object sender, EventArgs e)
         {
-            
-            this.Close();
-        }
 
+        }
+        
         private void discard_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void textBox1_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
         
     }
 }

@@ -16,7 +16,7 @@ namespace ZBoard
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ZBoard());
+            Application.Run(new Dashboard());
         }
     }
 }

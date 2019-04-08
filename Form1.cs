@@ -10,9 +10,14 @@ using System.Windows.Forms;
 
 namespace ZBoard
 {
-    public partial class ZBoard : Form
+    public partial class Dashboard : Form
     {
-        public ZBoard()
+        
+
+        private Button[] playbuttons = new Button[17];
+        private Button[] editbuttons = new Button[17];
+
+        public Dashboard()
         {
             InitializeComponent();
             //init of play button list
@@ -51,27 +56,57 @@ namespace ZBoard
             editbuttons[16] = editplay16;
         }
 
-        private Button[] playbuttons = new Button[17];
-        private Button[] editbuttons = new Button[17];
+        private void ZBoard_Load(object sender, EventArgs e)
+        {
+            // this.Location = Screen.AllScreens[1].WorkingArea.Location;
+        }
 
-        private bool emode = false;
+        //moving window with mouse
+        int mov;
+        int movX;
+        int movY;
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            mov = 1;
+            movX = e.X;
+            movY = e.Y;
+        }
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mov == 1)
+            {
+                this.SetDesktopLocation(MousePosition.X - movX, MousePosition.Y - movY);
+            }
+        }
+        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            mov = 0;
+        }
+
+        
         //button vars
         private string[] imgpaths = new string[17];
         private string[] wavpaths = new string[17];
         private string[] names = new string[17];
         private uint[] volumes = new uint[17];
 
-        
+        //              settings vars and img
         public void setButtonVars(int button,string ip, string wp, uint vl,string nm)
         {
+            
             imgpaths[button] = ip;
             wavpaths[button] = wp;
             volumes[button] = vl;
             names[button] = nm;
-
+            if(ip!=null)
+                playbuttons[button].BackgroundImage = Image.FromFile(ip);
+            if (nm != null)
+                playbuttons[button].Text = nm;
         }
 
-        //edit
+
+        //              edit
+        private bool emode = false;
         private void edit_play_Click(object sender, EventArgs e)
         {
             if (emode) emode = false;
@@ -96,9 +131,20 @@ namespace ZBoard
                 }
             }
         }
-       
 
-        //play
+        //      open edit window
+        private void openEditWindow(int n)
+        {
+            using (FormEdit form2 = new FormEdit())
+            {
+                form2.setVars(n,imgpaths[n],wavpaths[n],names[n]);
+                if (form2.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                 setButtonVars(form2.editedbutton, form2.imgpath, form2.wavpath, form2.volume, form2.name);
+                }
+            }
+        }
+       
         private void play1_Click(object sender, EventArgs e)
         {
             
@@ -108,25 +154,17 @@ namespace ZBoard
         {
 
         }
-        //edit
-        private void openEditWindow(int n)
-        {
-            FormEdit form2 = new FormEdit();
-            form2.Show();
-            form2.setVars(n, imgpaths[n], wavpaths[n], names[n]);
-        }
+        
 
 
         private void editplay1_Click(object sender, EventArgs e)
         {
-            openEditWindow(1);
-           // FormEdit form2 = new FormEdit();
-           // form2.Show();
-           // form2.setVars(1,imgpaths[1],wavpaths[1],names[1]);
+           openEditWindow(1);
+           
         }
         private void editplay2_Click(object sender, EventArgs e)
         {
-            openEditWindow(1);
+            openEditWindow(2);
         }
         
 
@@ -147,33 +185,8 @@ namespace ZBoard
             throw new NotImplementedException();
         }
 
-        
-        //moving window with mouse
-        int mov;
-        int movX;
-        int movY;
-        private void panel1_MouseDown(object sender, MouseEventArgs e)
-        {
-            mov = 1;
-            movX = e.X;
-            movY = e.Y;
-        }
 
-        private void panel1_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (mov == 1)
-            {
-                this.SetDesktopLocation(MousePosition.X - movX, MousePosition.Y - movY);
-            }
-        }
-
-        private void panel1_MouseUp(object sender, MouseEventArgs e)
-        {
-            mov = 0;
-        }
-        private void ZBoard_Load(object sender, EventArgs e)
-        {
-           // this.Location = Screen.AllScreens[1].WorkingArea.Location;
-        }
+       
+       
     }
 }

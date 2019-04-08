@@ -1,6 +1,6 @@
 ﻿namespace ZBoard
 {
-    partial class ZBoard
+    partial class Dashboard
     {
         /// <summary>
         /// Wymagana zmienna projektanta.
@@ -64,6 +64,7 @@
             this.exit = new System.Windows.Forms.Button();
             this.minimalize = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.bugFix = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -515,12 +516,21 @@
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseUp);
             // 
-            // ZBoard
+            // bugFix
+            // 
+            this.bugFix.Location = new System.Drawing.Point(12, 516);
+            this.bugFix.Name = "bugFix";
+            this.bugFix.ReadOnly = true;
+            this.bugFix.Size = new System.Drawing.Size(218, 20);
+            this.bugFix.TabIndex = 38;
+            // 
+            // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(727, 549);
+            this.Controls.Add(this.bugFix);
             this.Controls.Add(this.editplay14);
             this.Controls.Add(this.editplay16);
             this.Controls.Add(this.editplay15);
@@ -556,11 +566,12 @@
             this.Controls.Add(this.play1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "ZBoard";
-            this.Text = "Form1";
+            this.Name = "Dashboard";
+            this.Text = "texlll";
             this.Load += new System.EventHandler(this.ZBoard_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -602,6 +613,7 @@
         private System.Windows.Forms.Button exit;
         private System.Windows.Forms.Button minimalize;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox bugFix;
     }
 }
 

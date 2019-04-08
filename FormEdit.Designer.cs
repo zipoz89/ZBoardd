@@ -38,7 +38,7 @@
             this.playTest = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.trackWave = new System.Windows.Forms.TrackBar();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.nameBox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -52,6 +52,7 @@
             // 
             // save
             // 
+            this.save.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.save.Location = new System.Drawing.Point(97, 424);
             this.save.Name = "save";
             this.save.Size = new System.Drawing.Size(75, 23);
@@ -154,18 +155,18 @@
             this.trackWave.Value = 1;
             this.trackWave.Scroll += new System.EventHandler(this.trackWave_Scroll);
             // 
-            // textBox1
+            // nameBox
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(35)))), ((int)(((byte)(83)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Gadugi", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
-            this.textBox1.Location = new System.Drawing.Point(15, 43);
-            this.textBox1.MaxLength = 16;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(220, 23);
-            this.textBox1.TabIndex = 10;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
+            this.nameBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(35)))), ((int)(((byte)(83)))));
+            this.nameBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.nameBox.Font = new System.Drawing.Font("Gadugi", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
+            this.nameBox.Location = new System.Drawing.Point(15, 43);
+            this.nameBox.MaxLength = 16;
+            this.nameBox.Name = "nameBox";
+            this.nameBox.Size = new System.Drawing.Size(220, 23);
+            this.nameBox.TabIndex = 10;
+            this.nameBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
             // groupBox1
             // 
@@ -198,7 +199,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.nameBox);
             this.groupBox3.Font = new System.Drawing.Font("Gadugi", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(35)))), ((int)(((byte)(83)))));
             this.groupBox3.Location = new System.Drawing.Point(4, 315);
@@ -259,7 +260,7 @@
         private System.Windows.Forms.TextBox wavPath;
         private System.Windows.Forms.Button playTest;
         private System.Windows.Forms.TrackBar trackWave;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox nameBox;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;

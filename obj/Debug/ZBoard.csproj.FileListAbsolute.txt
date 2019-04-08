@@ -7,5 +7,5 @@ C:\Users\zipoz\source\repos\ZBoard\ZBoard\obj\Debug\ZBoard.csproj.GenerateResour
 C:\Users\zipoz\source\repos\ZBoard\ZBoard\obj\Debug\ZBoard.csproj.CoreCompileInputs.cache
 C:\Users\zipoz\source\repos\ZBoard\ZBoard\obj\Debug\ZBoard.exe
 C:\Users\zipoz\source\repos\ZBoard\ZBoard\obj\Debug\ZBoard.pdb
-C:\Users\zipoz\source\repos\ZBoard\ZBoard\obj\Debug\ZBoard.ZBoard.resources
 C:\Users\zipoz\source\repos\ZBoard\ZBoard\obj\Debug\ZBoard.FormEdit.resources
+C:\Users\zipoz\source\repos\ZBoard\ZBoard\obj\Debug\ZBoard.Dashboard.resources
