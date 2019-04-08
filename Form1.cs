@@ -4,15 +4,17 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace ZBoard
 {
     public partial class Dashboard : Form
     {
-        
+
 
         private Button[] playbuttons = new Button[17];
         private Button[] editbuttons = new Button[17];
@@ -54,6 +56,15 @@ namespace ZBoard
             editbuttons[14] = editplay14;
             editbuttons[15] = editplay15;
             editbuttons[16] = editplay16;
+
+            // By the default set the volume to 0
+            uint CurrVol = 0;
+            // At this point, CurrVol gets assigned the volume
+            waveOutGetVolume(IntPtr.Zero, out CurrVol);
+            // Calculate the volume
+            ushort CalcVol = (ushort)(CurrVol & 0x0000ffff);
+            // Get the volume on a scale of 1 to 10 (to fit the trackbar)
+           // trackWave.Value = CalcVol / (ushort.MaxValue / trackWave.Maximum);
         }
 
         private void ZBoard_Load(object sender, EventArgs e)
@@ -83,7 +94,7 @@ namespace ZBoard
             mov = 0;
         }
 
-        
+
         //button vars
         private string[] imgpaths = new string[17];
         private string[] wavpaths = new string[17];
@@ -91,17 +102,22 @@ namespace ZBoard
         private uint[] volumes = new uint[17];
 
         //              settings vars and img
-        public void setButtonVars(int button,string ip, string wp, uint vl,string nm)
+        public void setButtonVars(int button, string ip, string wp, uint vl, string nm)
         {
-            
+
             imgpaths[button] = ip;
             wavpaths[button] = wp;
             volumes[button] = vl;
             names[button] = nm;
-            if(ip!=null)
+            if (ip != null)
                 playbuttons[button].BackgroundImage = Image.FromFile(ip);
+            if (ip != null)
+                imgpaths[button] = ip;
+            if (wp != null)
+                wavpaths[button] = wp;
             if (nm != null)
                 playbuttons[button].Text = nm;
+            volumes[button] = vl;
         }
 
 
@@ -114,7 +130,7 @@ namespace ZBoard
 
             if (emode)
             {
-                for (int i = 1 ; i<17 ; i++)
+                for (int i = 1; i < 17; i++)
                 {
                     editbuttons[i].Visible = true;
                     playbuttons[i].Enabled = false;
@@ -137,39 +153,15 @@ namespace ZBoard
         {
             using (FormEdit form2 = new FormEdit())
             {
-                form2.setVars(n,imgpaths[n],wavpaths[n],names[n]);
+                form2.setVars(n, imgpaths[n], wavpaths[n], names[n]);
                 if (form2.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                 setButtonVars(form2.editedbutton, form2.imgpath, form2.wavpath, form2.volume, form2.name);
+                    setButtonVars(form2.editedbutton, form2.imgpath, form2.wavpath, form2.volume, form2.name);
                 }
             }
         }
-       
-        private void play1_Click(object sender, EventArgs e)
-        {
-            
-        }
 
-        private void play2_Click(object sender, EventArgs e)
-        {
-
-        }
-        
-
-
-        private void editplay1_Click(object sender, EventArgs e)
-        {
-           openEditWindow(1);
-           
-        }
-        private void editplay2_Click(object sender, EventArgs e)
-        {
-            openEditWindow(2);
-        }
-        
-
-        
-        //window options
+        //              window options
         private void exit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -180,13 +172,99 @@ namespace ZBoard
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void minimalize_Click()
+        //          edit buttons
+        private void editplay1_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            openEditWindow(1);
+
+        }
+        private void editplay2_Click(object sender, EventArgs e)
+        {
+            openEditWindow(2);
+        }
+        private void editplay3_Click(object sender, EventArgs e)
+        {
+            openEditWindow(3);
+        }
+        private void editplay4_Click(object sender, EventArgs e)
+        {
+            openEditWindow(4);
+        }
+        private void editplay5_Click(object sender, EventArgs e)
+        {
+            openEditWindow(5);
+        }
+        private void editplay6_Click(object sender, EventArgs e)
+        {
+            openEditWindow(6);
+        }
+        private void editplay7_Click(object sender, EventArgs e)
+        {
+            openEditWindow(7);
+        }
+        private void editplay8_Click(object sender, EventArgs e)
+        {
+            openEditWindow(8);
+        }
+        private void editplay9_Click(object sender, EventArgs e)
+        {
+            openEditWindow(9);
+        }
+        private void editplay10_Click(object sender, EventArgs e)
+        {
+            openEditWindow(10);
+        }
+        private void editplay11_Click(object sender, EventArgs e)
+        {
+            openEditWindow(11);
+        }
+        private void editplay12_Click(object sender, EventArgs e)
+        {
+            openEditWindow(12);
+        }
+        private void editplay13_Click(object sender, EventArgs e)
+        {
+            openEditWindow(13);
+        }
+        private void editplay14_Click(object sender, EventArgs e)
+        {
+            openEditWindow(14);
+        }
+        private void editplay15_Click(object sender, EventArgs e)
+        {
+            openEditWindow(15);
+        }
+        private void editplay16_Click(object sender, EventArgs e)
+        {
+            openEditWindow(16);
         }
 
+        //          play music
+        //volume shit
+        [DllImport("winmm.dll")]
+        public static extern int waveOutGetVolume(IntPtr hwo, out uint dwVolume);
+        [DllImport("winmm.dll")]
+        public static extern int waveOutSetVolume(IntPtr hwo, uint dwVolume);
 
-       
-       
+        private void play(int n)
+        {
+            if (wavpaths[n] != null)
+            {
+                waveOutSetVolume(IntPtr.Zero, volumes[n]);
+                SoundPlayer snd = new SoundPlayer(wavpaths[n]);
+                snd.Play();
+            }
+        }
+
+        //          play buttons
+        private void play1_Click(object sender, EventArgs e)
+        {
+            play(1);
+        }
+        private void play2_Click(object sender, EventArgs e)
+        { 
+            play(2);
+        }
+
     }
 }

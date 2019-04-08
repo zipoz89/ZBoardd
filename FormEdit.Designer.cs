@@ -147,12 +147,11 @@
             // 
             this.trackWave.Location = new System.Drawing.Point(7, 49);
             this.trackWave.Maximum = 100;
-            this.trackWave.Minimum = 1;
             this.trackWave.Name = "trackWave";
             this.trackWave.Size = new System.Drawing.Size(219, 45);
             this.trackWave.TabIndex = 9;
             this.trackWave.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackWave.Value = 1;
+            this.trackWave.Value = 5;
             this.trackWave.Scroll += new System.EventHandler(this.trackWave_Scroll);
             // 
             // nameBox
