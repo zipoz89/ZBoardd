@@ -1,0 +1,11 @@
+C:\Users\zipoz\source\repos\ZBoard\ZBoard\bin\Debug\ZBoard.exe.config
+C:\Users\zipoz\source\repos\ZBoard\ZBoard\bin\Debug\ZBoard.exe
+C:\Users\zipoz\source\repos\ZBoard\ZBoard\bin\Debug\ZBoard.pdb
+C:\Users\zipoz\source\repos\ZBoard\ZBoard\obj\Debug\ZBoard.csprojAssemblyReference.cache
+C:\Users\zipoz\source\repos\ZBoard\ZBoard\obj\Debug\ZBoard.Properties.Resources.resources
+C:\Users\zipoz\source\repos\ZBoard\ZBoard\obj\Debug\ZBoard.csproj.GenerateResource.cache
+C:\Users\zipoz\source\repos\ZBoard\ZBoard\obj\Debug\ZBoard.csproj.CoreCompileInputs.cache
+C:\Users\zipoz\source\repos\ZBoard\ZBoard\obj\Debug\ZBoard.exe
+C:\Users\zipoz\source\repos\ZBoard\ZBoard\obj\Debug\ZBoard.pdb
+C:\Users\zipoz\source\repos\ZBoard\ZBoard\obj\Debug\ZBoard.ZBoard.resources
+C:\Users\zipoz\source\repos\ZBoard\ZBoard\obj\Debug\ZBoard.FormEdit.resources
