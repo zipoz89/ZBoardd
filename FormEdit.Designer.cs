@@ -42,6 +42,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackWave)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -51,7 +52,7 @@
             // 
             // save
             // 
-            this.save.Location = new System.Drawing.Point(99, 390);
+            this.save.Location = new System.Drawing.Point(97, 424);
             this.save.Name = "save";
             this.save.Size = new System.Drawing.Size(75, 23);
             this.save.TabIndex = 0;
@@ -61,7 +62,7 @@
             // 
             // discard
             // 
-            this.discard.Location = new System.Drawing.Point(180, 390);
+            this.discard.Location = new System.Drawing.Point(178, 424);
             this.discard.Name = "discard";
             this.discard.Size = new System.Drawing.Size(75, 23);
             this.discard.TabIndex = 1;
@@ -121,6 +122,7 @@
             // 
             // playTest
             // 
+            this.playTest.Enabled = false;
             this.playTest.Location = new System.Drawing.Point(114, 22);
             this.playTest.Name = "playTest";
             this.playTest.Size = new System.Drawing.Size(113, 21);
@@ -173,7 +175,7 @@
             this.groupBox1.Controls.Add(this.trackWave);
             this.groupBox1.Font = new System.Drawing.Font("Gadugi", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(35)))), ((int)(((byte)(83)))));
-            this.groupBox1.Location = new System.Drawing.Point(6, 166);
+            this.groupBox1.Location = new System.Drawing.Point(4, 200);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(249, 109);
             this.groupBox1.TabIndex = 13;
@@ -187,7 +189,7 @@
             this.groupBox2.Controls.Add(this.pictureBox1);
             this.groupBox2.Font = new System.Drawing.Font("Gadugi", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(35)))), ((int)(((byte)(83)))));
-            this.groupBox2.Location = new System.Drawing.Point(6, 5);
+            this.groupBox2.Location = new System.Drawing.Point(4, 39);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(249, 155);
             this.groupBox2.TabIndex = 14;
@@ -199,24 +201,37 @@
             this.groupBox3.Controls.Add(this.textBox1);
             this.groupBox3.Font = new System.Drawing.Font("Gadugi", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(35)))), ((int)(((byte)(83)))));
-            this.groupBox3.Location = new System.Drawing.Point(6, 281);
+            this.groupBox3.Location = new System.Drawing.Point(4, 315);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(249, 95);
             this.groupBox3.TabIndex = 15;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "groupBox3";
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(35)))), ((int)(((byte)(83)))));
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(265, 33);
+            this.panel1.TabIndex = 16;
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
+            this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseUp);
+            // 
             // FormEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
-            this.ClientSize = new System.Drawing.Size(265, 425);
+            this.ClientSize = new System.Drawing.Size(265, 459);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.discard);
             this.Controls.Add(this.save);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormEdit";
             this.ShowIcon = false;
             this.Text = "EDIT";
@@ -248,5 +263,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Panel panel1;
     }
 }

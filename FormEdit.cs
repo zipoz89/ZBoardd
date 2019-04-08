@@ -16,6 +16,30 @@ namespace ZBoard
     {
         private int editedbutton;
 
+
+        //          moving with mouse
+        int mov;
+        int movX;
+        int movY;
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            mov = 1;
+            movX = e.X;
+            movY = e.Y;
+        }
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mov == 1)
+            {
+                this.SetDesktopLocation(MousePosition.X - movX, MousePosition.Y - movY);
+            }
+        }
+        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            mov = 0;
+        }
+
+        //              seting values if already set
         public void setVars(int n,string ip,string wp,string nm)
         {
             editedbutton = n;
@@ -29,6 +53,7 @@ namespace ZBoard
             if (wavpath != null)
             {
                 wavPath.Text = wavpath;
+                playTest.Enabled = true;
             }
             if (nm != null)
             {
@@ -36,25 +61,27 @@ namespace ZBoard
             }
         }
 
-        //vars to be saves
+        //       vars to be saves
         private string imgpath;
         private string wavpath;
         private uint volume;
         private string name;
 
+        //volume shit
         [DllImport("winmm.dll")]
         public static extern int waveOutGetVolume(IntPtr hwo, out uint dwVolume);
-
         [DllImport("winmm.dll")]
         public static extern int waveOutSetVolume(IntPtr hwo, uint dwVolume);
 
 
-
+        //init
         public FormEdit()
         {
             InitializeComponent();
             
 
+
+            //             VOLUME
             // By the default set the volume to 0
             uint CurrVol = 0;
             // At this point, CurrVol gets assigned the volume
@@ -102,6 +129,7 @@ namespace ZBoard
                 {
                     wavpath = openFileDialog1.FileName;
                     wavPath.Text = wavpath;
+                    playTest.Enabled = true;
                 }
             }
         }
@@ -148,5 +176,6 @@ namespace ZBoard
         {
 
         }
+        
     }
 }
