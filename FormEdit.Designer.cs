@@ -43,6 +43,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.convertToWav = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackWave)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -87,9 +88,9 @@
             // 
             // openWav
             // 
-            this.openWav.Location = new System.Drawing.Point(7, 22);
+            this.openWav.Location = new System.Drawing.Point(15, 22);
             this.openWav.Name = "openWav";
-            this.openWav.Size = new System.Drawing.Size(101, 21);
+            this.openWav.Size = new System.Drawing.Size(80, 23);
             this.openWav.TabIndex = 5;
             this.openWav.Text = "Select wav file";
             this.openWav.UseVisualStyleBackColor = true;
@@ -124,9 +125,9 @@
             // playTest
             // 
             this.playTest.Enabled = false;
-            this.playTest.Location = new System.Drawing.Point(114, 22);
+            this.playTest.Location = new System.Drawing.Point(187, 22);
             this.playTest.Name = "playTest";
-            this.playTest.Size = new System.Drawing.Size(113, 21);
+            this.playTest.Size = new System.Drawing.Size(40, 23);
             this.playTest.TabIndex = 8;
             this.playTest.Text = "Play";
             this.playTest.UseVisualStyleBackColor = true;
@@ -169,9 +170,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.openWav);
+            this.groupBox1.Controls.Add(this.convertToWav);
             this.groupBox1.Controls.Add(this.playTest);
             this.groupBox1.Controls.Add(this.wavPath);
-            this.groupBox1.Controls.Add(this.openWav);
             this.groupBox1.Controls.Add(this.trackWave);
             this.groupBox1.Font = new System.Drawing.Font("Gadugi", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(35)))), ((int)(((byte)(83)))));
@@ -219,6 +221,16 @@
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseUp);
             // 
+            // convertToWav
+            // 
+            this.convertToWav.Location = new System.Drawing.Point(101, 22);
+            this.convertToWav.Name = "convertToWav";
+            this.convertToWav.Size = new System.Drawing.Size(80, 23);
+            this.convertToWav.TabIndex = 10;
+            this.convertToWav.Text = "Select mp3";
+            this.convertToWav.UseVisualStyleBackColor = true;
+            this.convertToWav.Click += new System.EventHandler(this.convertToWav_Click);
+            // 
             // FormEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -264,5 +276,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button convertToWav;
     }
 }

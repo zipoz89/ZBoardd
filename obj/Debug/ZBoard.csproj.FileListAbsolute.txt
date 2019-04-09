@@ -9,3 +9,6 @@ C:\Users\zipoz\source\repos\ZBoard\ZBoard\obj\Debug\ZBoard.exe
 C:\Users\zipoz\source\repos\ZBoard\ZBoard\obj\Debug\ZBoard.pdb
 C:\Users\zipoz\source\repos\ZBoard\ZBoard\obj\Debug\ZBoard.FormEdit.resources
 C:\Users\zipoz\source\repos\ZBoard\ZBoard\obj\Debug\ZBoard.Dashboard.resources
+C:\Users\zipoz\source\repos\ZBoard\ZBoard\bin\Debug\NAudio.dll
+C:\Users\zipoz\source\repos\ZBoard\ZBoard\bin\Debug\NAudio.xml
+C:\Users\zipoz\source\repos\ZBoard\ZBoard\obj\Debug\ZBoard.csproj.CopyComplete

@@ -65,6 +65,7 @@
             this.minimalize = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.bugFix = new System.Windows.Forms.TextBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -506,6 +507,7 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(35)))), ((int)(((byte)(83)))));
             this.panel1.Controls.Add(this.minimalize);
             this.panel1.Controls.Add(this.exit);
+            this.panel1.Controls.Add(this.bugFix);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(727, 48);
@@ -516,11 +518,22 @@
             // 
             // bugFix
             // 
-            this.bugFix.Location = new System.Drawing.Point(12, 516);
+            this.bugFix.Location = new System.Drawing.Point(238, 14);
             this.bugFix.Name = "bugFix";
             this.bugFix.ReadOnly = true;
             this.bugFix.Size = new System.Drawing.Size(152, 20);
             this.bugFix.TabIndex = 38;
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Items.AddRange(new object[] {
+            "sdsdsdsd",
+            "sdsdsd"});
+            this.listBox1.Location = new System.Drawing.Point(12, 119);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(154, 420);
+            this.listBox1.TabIndex = 40;
             // 
             // Dashboard
             // 
@@ -528,7 +541,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(606, 549);
-            this.Controls.Add(this.bugFix);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.editplay14);
             this.Controls.Add(this.editplay16);
             this.Controls.Add(this.editplay15);
@@ -568,8 +581,8 @@
             this.Text = "texlll";
             this.Load += new System.EventHandler(this.ZBoard_Load);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -612,6 +625,7 @@
         private System.Windows.Forms.Button minimalize;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox bugFix;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
 

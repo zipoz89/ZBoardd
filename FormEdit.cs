@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using NAudio.Wave;
+using System.IO;
 
 namespace ZBoard
 {
@@ -108,7 +110,9 @@ namespace ZBoard
         {
 
         }
-        //open buttons
+        //                  open buttons
+
+        //      open img
         private void openImg_Click(object sender, EventArgs e)
         {
             // OpenFileDialog openFileDialog1 = new OpenFileDialog();
@@ -116,24 +120,61 @@ namespace ZBoard
             {
                 if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    imgpath = openFileDialog1.FileName;
-                    pictureBox1.BackgroundImage = Image.FromFile(imgpath);
-                    Jpgpath.Text = imgpath;
+
+                        imgpath = openFileDialog1.FileName;
+                        pictureBox1.BackgroundImage = Image.FromFile(imgpath);
+                        Jpgpath.Text = imgpath;
+                    
                 }
             }
         }
+        //      open wav
         private void openWav_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog1 = new OpenFileDialog() { Filter = "WAV|*.wav", Multiselect = false, ValidateNames = true })
             {
                 if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    wavpath = openFileDialog1.FileName;
-                    wavPath.Text = wavpath;
-                    playTest.Enabled = true;
+                        wavpath = openFileDialog1.FileName;
+                        wavPath.Text = wavpath;
+                        playTest.Enabled = true;                 
                 }
             }
         }
+        //      open and convert mp3
+        private void convertToWav_Click(object sender, EventArgs e)
+        {
+            
+            if (MessageBox.Show("Before adding mp3 file conversion to wav is needed!") == System.Windows.Forms.DialogResult.OK)
+            {
+                using (OpenFileDialog openFileDialog1 = new OpenFileDialog() { Filter = "MP3|*.mp3", Multiselect = false, ValidateNames = true })
+                {
+                    if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        string convertedpath = System.Environment.CurrentDirectory + "/Wav_Conversion/" + openFileDialog1.SafeFileName.Substring(0, openFileDialog1.SafeFileName.Length - 4) + ".wav";
+                        ConvertMp3ToWav(openFileDialog1.FileName, convertedpath);
+
+                        wavpath = convertedpath;
+                        wavPath.Text = wavpath;
+                        playTest.Enabled = true;
+                    }
+                }
+            }
+        }
+
+
+        //             convert to wav
+        private static void ConvertMp3ToWav(string _inPath_, string _outPath_)
+        {
+            using (Mp3FileReader mp3 = new Mp3FileReader(_inPath_))
+            {
+                using (WaveStream pcm = WaveFormatConversionStream.CreatePcmStream(mp3))
+                {
+                    WaveFileWriter.CreateWaveFile(_outPath_, pcm);
+                }
+            }
+        }
+
         //              holders
         private void pictureBox1_Click(object sender, EventArgs e)
         {
