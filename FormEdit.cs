@@ -145,7 +145,7 @@ namespace ZBoard
         private void convertToWav_Click(object sender, EventArgs e)
         {
             
-            if (MessageBox.Show("Before adding mp3 file conversion to wav is needed!") == System.Windows.Forms.DialogResult.OK)
+            if (MessageBox.Show("Before adding mp3 file\n conversion to wav is needed!") == System.Windows.Forms.DialogResult.OK)
             {
                 using (OpenFileDialog openFileDialog1 = new OpenFileDialog() { Filter = "MP3|*.mp3", Multiselect = false, ValidateNames = true })
                 {

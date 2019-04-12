@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Collections;
+using System.IO;
 
 namespace ZBoard
 {
@@ -19,10 +21,35 @@ namespace ZBoard
         private Button[] playbuttons = new Button[17];
         private Button[] editbuttons = new Button[17];
 
+        
+
         public Dashboard()
         {
             InitializeComponent();
-            //init of play button list
+
+            //load everything
+            initProfiles();
+
+            //add buttons to array
+            AddToArrays();
+
+            // By the default set the volume to 0
+            uint CurrVol = 0;
+            // At this point, CurrVol gets assigned the volume
+            waveOutGetVolume(IntPtr.Zero, out CurrVol);
+            // Calculate the volume
+            ushort CalcVol = (ushort)(CurrVol & 0x0000ffff);
+            // Get the volume on a scale of 1 to 10 (to fit the trackbar)
+           // trackWave.Value = CalcVol / (ushort.MaxValue / trackWave.Maximum);
+        }
+
+        private void ZBoard_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddToArrays()
+        {
             playbuttons[1] = play1;
             playbuttons[2] = play2;
             playbuttons[3] = play3;
@@ -39,7 +66,7 @@ namespace ZBoard
             playbuttons[14] = play14;
             playbuttons[15] = play15;
             playbuttons[16] = play16;
-            //init of edit button list
+            
             editbuttons[1] = editplay1;
             editbuttons[2] = editplay2;
             editbuttons[3] = editplay3;
@@ -56,20 +83,22 @@ namespace ZBoard
             editbuttons[14] = editplay14;
             editbuttons[15] = editplay15;
             editbuttons[16] = editplay16;
-
-            // By the default set the volume to 0
-            uint CurrVol = 0;
-            // At this point, CurrVol gets assigned the volume
-            waveOutGetVolume(IntPtr.Zero, out CurrVol);
-            // Calculate the volume
-            ushort CalcVol = (ushort)(CurrVol & 0x0000ffff);
-            // Get the volume on a scale of 1 to 10 (to fit the trackbar)
-           // trackWave.Value = CalcVol / (ushort.MaxValue / trackWave.Maximum);
         }
 
-        private void ZBoard_Load(object sender, EventArgs e)
+        //              Initialize profiles
+        private void initProfiles()
         {
-            // this.Location = Screen.AllScreens[1].WorkingArea.Location;
+            StreamReader Profiles = new StreamReader(Directory.GetCurrentDirectory() + "/Profiles/ProfilesNames.txt");
+            string line = Profiles.ReadLine();
+            while (line != null)
+            {
+                profilenames.Add(line);
+                line = Profiles.ReadLine();
+            }
+            foreach (string str in profilenames)
+            {
+                listBox1.Items.Add(str);
+            }
         }
 
         //moving window with mouse
@@ -118,6 +147,7 @@ namespace ZBoard
             if (nm != null)
                 playbuttons[button].Text = nm;
             volumes[button] = vl;
+            
         }
 
 
@@ -266,5 +296,63 @@ namespace ZBoard
             play(2);
         }
 
+        //          Profiles list
+        List<String> profilenames = new List<String>();
+        
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        private bool CheckProfileName(string name)
+        {
+            if (ProfileName.Text.Equals("Profile Name"))
+                return false;
+            if (ProfileName.Text.Equals(""))
+                return false;
+            int spaces = 0;
+            for (int i = 0; i < name.Length; i++)
+            {
+                if (name[i].Equals(' ')) spaces++;
+            }
+            if (spaces == name.Length) return false;
+            foreach (string str in profilenames)
+            {
+                if (name.Equals(str))
+                {
+                    MessageBox.Show("Profile with this name already exist!");
+                    return false;
+                }
+            }
+            return true;
+        }
+        private void AddProfile_Click(object sender, EventArgs e)
+        {
+
+            if (CheckProfileName(ProfileName.Text))
+            {
+                
+                StreamWriter save = new StreamWriter(Directory.GetCurrentDirectory()+"/Profiles/"+ ProfileName.Text+".txt");
+                save.Close();
+                profilenames.Add(ProfileName.Text);
+                listBox1.Items.Add(ProfileName.Text);
+                ProfileName.Text = "Profile Name";
+                AddProfile.Enabled = false;
+            }
+            else ProfileName.Text = "Profile Name";
+        }
+        private void ProfileName_Click(object sender, EventArgs e)
+        {
+            if (ProfileName.Text.Equals("Profile Name"))
+            {
+                ProfileName.Text = "";
+            }
+        }
+        private void ProfileName_TextChanged(object sender, EventArgs e)
+        {
+            if (!ProfileName.Text.Equals("Profile Name"))
+                AddProfile.Enabled = true;
+            if (ProfileName.Text.Equals("Profile Name"))
+                AddProfile.Enabled = false;
+        }
     }
 }

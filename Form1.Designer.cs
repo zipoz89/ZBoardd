@@ -66,6 +66,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.bugFix = new System.Windows.Forms.TextBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.AddProfile = new System.Windows.Forms.Button();
+            this.ProfileName = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -527,13 +529,33 @@
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Items.AddRange(new object[] {
-            "sdsdsdsd",
-            "sdsdsd"});
             this.listBox1.Location = new System.Drawing.Point(12, 119);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(154, 420);
             this.listBox1.TabIndex = 40;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            // 
+            // AddProfile
+            // 
+            this.AddProfile.Enabled = false;
+            this.AddProfile.Location = new System.Drawing.Point(12, 65);
+            this.AddProfile.Name = "AddProfile";
+            this.AddProfile.Size = new System.Drawing.Size(66, 23);
+            this.AddProfile.TabIndex = 41;
+            this.AddProfile.Text = "Add Profile";
+            this.AddProfile.UseVisualStyleBackColor = true;
+            this.AddProfile.Click += new System.EventHandler(this.AddProfile_Click);
+            // 
+            // ProfileName
+            // 
+            this.ProfileName.Location = new System.Drawing.Point(13, 93);
+            this.ProfileName.MaxLength = 24;
+            this.ProfileName.Name = "ProfileName";
+            this.ProfileName.Size = new System.Drawing.Size(153, 20);
+            this.ProfileName.TabIndex = 42;
+            this.ProfileName.Text = "Profile Name";
+            this.ProfileName.Click += new System.EventHandler(this.ProfileName_Click);
+            this.ProfileName.TextChanged += new System.EventHandler(this.ProfileName_TextChanged);
             // 
             // Dashboard
             // 
@@ -541,6 +563,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(606, 549);
+            this.Controls.Add(this.ProfileName);
+            this.Controls.Add(this.AddProfile);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.editplay14);
             this.Controls.Add(this.editplay16);
@@ -583,6 +607,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -626,6 +651,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox bugFix;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button AddProfile;
+        private System.Windows.Forms.TextBox ProfileName;
     }
 }
 
